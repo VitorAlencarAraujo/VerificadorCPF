@@ -13,11 +13,11 @@ public class Verificador {
 
             int validador1, validador2;
 
-            System.out.print("\nInforme o CPF:");
-
+            //Leitura do CPF
+            System.out.print("\nInforme o CPF (Apenas números):");
             String cpf = sc.next();
 
-            //Verificar de o CPF ter 11 digitos
+            //Verificar se o CPF tem 11 digitos
             /* cpf.length Retorna o número de caracteres da String CPF */
             if (cpf.length() != 11) {
                 System.out.println("CPF Não tem 11 digitos!");
@@ -29,12 +29,9 @@ public class Verificador {
             boolean TodosIguais = true;
 
         for (int i = 0; i < cpf.length(); i++){
-
             if (cpf.charAt(i) != cpf.charAt(0)){
             TodosIguais = false;
-
             }
-
         }
             if (TodosIguais) {
                 System.out.println("CPF inválido! Todos os dígitos são iguais.");
@@ -42,7 +39,6 @@ public class Verificador {
             }
 
             //Calculo do primeiro digito verificador
-
             int somaTudo = 0;
         for (int i = 0; i <= 8; i++){
 
@@ -53,7 +49,6 @@ public class Verificador {
         }
             int restoDoDigito1 = somaTudo%11;
 
-
             if (restoDoDigito1 >= 2){
                 validador1 = 11 - restoDoDigito1;
             }
@@ -62,9 +57,7 @@ public class Verificador {
             }
 
             int somaTudo2 = 0;
-
             //Segundo Digito Verificador
-
             for (int i = 0; i <= 9; i++){
                 int numero = Character.getNumericValue(cpf.charAt(i)) * (11 - i);
                 somaTudo2 += numero;
@@ -85,7 +78,6 @@ public class Verificador {
                 System.out.println("CPF Válido!");
 
             }
-
             else {
                 System.out.println("CPF Inválido!");
             }
